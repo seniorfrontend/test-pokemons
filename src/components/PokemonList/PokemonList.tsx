@@ -19,8 +19,12 @@ function PokemonList({ pokemons, isLoading, isError }: Iprops) {
         return <Styling.Error>Error</Styling.Error>
     }
 
+    if (!pokemons?.length) {
+        return <Styling.Error>Not found</Styling.Error>
+    }
+
     return <Styling.List>
-        {Array.isArray(pokemons) && pokemons.map(pokemon => (
+        {pokemons?.map(pokemon => (
             <PokemonCard
                 key={pokemon.name}
                 name={pokemon.name}
